@@ -1,0 +1,105 @@
+:root {
+    --rojo: #b90e0a;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #222;
+}
+
+/* NAVBAR */
+.navbar {
+    position: sticky;
+    top: 0;
+    background: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 40px;
+    border-bottom: 1px solid #eee;
+    z-index: 100;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #222;
+    font-weight: bold;
+    margin-left: 30px;
+}
+
+/* HERO */
+.hero {
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* MARCAS */
+.marca {
+    position: relative;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.marca img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.1);
+}
+
+.marca::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.35);
+}
+
+.marca-content {
+    position: relative;
+    color: white;
+    text-align: center;
+    max-width: 600px;
+    opacity: 0;
+    transform: translateY(60px);
+    transition: all 1s ease;
+}
+
+.marca.visible .marca-content {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.marca h2 {
+    font-size: 3rem;
+}
+
+.marca a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 15px 40px;
+    background: var(--rojo);
+    color: white;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+.marca a:hover {
+    transform: scale(1.05);
+}
+
+/* FOOTER */
+.footer {
+    background: #222;
+    color: #eee;
+    text-align: center;
+    padding: 30px;
+}
+/* CSS Document */
+
