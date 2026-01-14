@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grupo de Marcas</title>
+
+<style>
+:root {
+    --rojo: #b90e0a;
+    --rojo-oscuro: #8b0000;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #222;
+}
+
+/* HEADER */
+header {
+    padding: 25px;
+    text-align: center;
+    background: var(--rojo);
+    color: white;
+}
+
+/* NAV */
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 15px;
+    background: white;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    border-bottom: 1px solid #eee;
+}
+
+nav a {
+    text-decoration: none;
+    color: #222;
+    font-weight: bold;
+    position: relative;
+}
+
+nav a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: var(--rojo);
+    left: 0;
+    bottom: -6px;
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* HERO */
+.hero {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: #f6f6f6;
+}
+
+.hero h2 {
+    font-size: 3rem;
+    max-width: 800px;
+}
+
+/* MARCAS */
+.marca {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 20px;
+    overflow: hidden;
+}
+
+.marca-content {
+    max-width: 600px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(60px);
+    transition: all 0.9s ease;
+}
+
+.marca.visible .marca-content {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.marca h2 {
+    font-size: 3rem;
+    color: var(--rojo);
+}
+
+.marca p {
+    font-size: 1.2rem;
+    margin: 20px 0;
+}
+
+/* BOTÓN */
+.marca a {
+    display: inline-block;
+    padding: 15px 40px;
+    background: var(--rojo);
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.marca a:hover {
+    background: var(--rojo-oscuro);
+    transform: scale(1.05);
+}
+
+/* COLORES DIFERENTES POR MARCA */
+.socarraet { background: #fff; }
+.teresas   { background: #fafafa; }
+.lola      { background: #fff; }
+.casaasia  { background: #fafafa; }
+
+/* FOOTER */
+footer {
+    background: #222;
+    color: #eee;
+    text-align: center;
+    padding: 30px;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Grupo de Marcas</h1>
+</header>
+
+<nav>
+    <a href="nuestras-marcas.html">Nuestras marcas</a>
+    <a href="sobre-nosotros.html">Sobre Nosotros</a>
+    <a href="contacto.html">Contacto</a>
+</nav>
+
+<section class="hero">
+    <h2>Cuatro marcas. Una forma de entender el sabor.</h2>
+</section>
+
+<section class="marca socarraet">
+    <div class="marca-content">
+        <h2>Socarraet</h2>
+        <p>Arroces y tradición mediterránea con carácter propio.</p>
+        <a href="nuestras-marcas.html#socarraet">Descubrir</a>
+    </div>
+</section>
+
+<section class="marca teresas">
+    <div class="marca-content">
+        <h2>Teresa's</h2>
+        <p>El sabor casero de siempre, listo para hoy.</p>
+        <a href="nuestras-marcas.html#teresas">Descubrir</a>
+    </div>
+</section>
+
+<section class="marca lola">
+    <div class="marca-content">
+        <h2>Lola</h2>
+        <p>Sabores atrevidos, modernos y llenos de personalidad.</p>
+        <a href="nuestras-marcas.html#lola">Descubrir</a>
+    </div>
+</section>
+
+<section class="marca casaasia">
+    <div class="marca-content">
+        <h2>Casa Asia</h2>
+        <p>Inspiración asiática para el día a día.</p>
+        <a href="nuestras-marcas.html#casa-asia">Descubrir</a>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 Grupo de Marcas</p>
+</footer>
+
+<script>
+/* Animación al hacer scroll (estilo Heinz) */
+const marcas = document.querySelectorAll('.marca');
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, { threshold: 0.3 });
+
+marcas.forEach(marca => observer.observe(marca));
+</script>
+
+</body>
+</html>
